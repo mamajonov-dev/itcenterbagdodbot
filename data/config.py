@@ -9,3 +9,4 @@ ADMINS = env.list("ADMINS")  # Тут у нас будет список из а�
 # IP = env.str("ip")  # Тоже str, но для айпи адреса хоста
 latitude = env.float('latitude')
 longitude = env.float('longitude')
+CHANNELS = '@bagdaditacademy'

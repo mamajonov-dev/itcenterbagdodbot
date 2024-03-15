@@ -34,7 +34,6 @@ async def getcoursename(message: Message, state: FSMContext):
         await message.answer('Bosh menu', reply_markup=genearatemainmenu())
         await state.finish()
     else:
-
         await message.answer('Telefon raqamingizni kiriting. "+" belgisisiz:\n'
                              'Namuna: 998911234567', reply_markup=backbutton())
         await state.update_data({'name': text})
@@ -73,12 +72,14 @@ async def getcoursename(message: Message, state: FSMContext):
             phone = data['phone']
             phone2 = data['phone2']
             user = message.from_user.get_mention(as_html=True)
+            print(user)
             senduser = f"❗️Yangi o'quvchi\n" \
                        f"User: {user}\n" \
                        f"Student: {name}\n" \
                        f"Kurs: {course}\n" \
                        f"\nTelefon: {phone}\n" \
-                       f"Qo'shimcha: {phone2}"
+                       f"Qo'shimcha: {phone2}\n\n" \
+                       f"Userid {message.chat.id}"
             for admin in ADMINS:
                 await bot.send_message(chat_id=admin, text=senduser)
             await message.answer("✅ Ma'lumotingiz qabul qilindi. Menejerimiz tez orada siz bilan bog'lanadi! \n"

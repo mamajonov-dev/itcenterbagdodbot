@@ -18,7 +18,6 @@
 #     if str(message.chat.id) in admin:
 #         await message.answer('Reklamani yozing: ', reply_markup=backbutton())
 #         await SendadState.ad.set()
-#
 #     else:
 #         pass
 #
@@ -42,7 +41,6 @@
 #         database = sqlite3.connect('././database.sqlite')
 #         cursor = database.cursor()
 #         cursor.execute('''SELECT telegram_id FROM users''')
-#
 #         users = cursor.fetchall()
 #         for user in users:
 #             chat_id = user[0]

@@ -78,3 +78,15 @@ async def getcourse(message: Message, state: FSMContext):
                              f"\n\nKurs narxi: 300 000 so'm\n"
                              f"Birinchi oy uchun chegirmadagi narx: 150000 so'm\n"
                              f"Kurs davomiyligi: 6 oy")
+    elif text =='💻 Autocad (uylarni loyihalash)':
+        await message.answer(f"""Kurs nomi:  Autocad (uylarni loyihalash)
+        
+        AUTOCAD TIZIMDA LOYIHALASH VA MUHANDISLIK
+ 
+        AutoCAD grafik ilovasi yordamida tezda ko'nikmalarga ega bo'lishni xohlaysizmi? AutoCAD kursi uning noyob xususiyatlaridan foydalanishni o'rganishi kerak bo'lgan har bir kishi uchun mo'ljallangan. Sinflar o'quvchilar o'quv jarayonida amaliy qatnashish, AutoCAD tamoyillarini tez va etarli darajada o'zlashtirish imkoniyatiga ega bo'ladigan tarzda yaratilgan.
+        AutoCAD kursining o'quv dasturi dizayn va muhandislik hujjatlarini ishlab chiqish jarayonini avtomatlashtirish imkoniyatlarini o'zlashtirishga qaratilgan. AutoCAD tizimining asosiy maqsadi turli xil mavzudagi loyihalar uchun chizmalar yaratishdir. Bu ob'ektlar, turli mexanizmlarning loyihalari, shuningdek, elektr sxemalarini ishlab chiqish bo'lishi mumkin.                    
+        Kurs oxirida talabalar sertifikat oladilar.
+        To'lovning har qanday shakli.
+                             
+        Kurs narxi: 400 000 so'm
+        Kurs davomiyligi: 3 oy""")

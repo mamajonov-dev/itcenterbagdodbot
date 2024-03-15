@@ -23,6 +23,8 @@ async def getcomment(message: Message, state: FSMContext):
         fullname = message.from_user.full_name
         username = message.from_user.username
         user = message.from_user.get_mention()
+        print(user)
+        print(message.from_user)
         text = f'Ismi: {fullname}\n' \
                f'User name: @{username}\n' \
                f'Telegram id: {chat_id}\n' \

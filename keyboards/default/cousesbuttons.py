@@ -15,6 +15,9 @@ def generatecoursebuttons():
         KeyboardButton(text='💻 Grafik dizayn'),
         KeyboardButton(text='💻 Python')
     )
+    markup.add(
+        KeyboardButton(text='💻 Autocad (uylarni loyihalash)'),
+    )
 
     markup.add(KeyboardButton(text='⬅️ Orqaga'))
 
