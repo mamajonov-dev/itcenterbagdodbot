@@ -90,3 +90,24 @@ async def getcourse(message: Message, state: FSMContext):
                              
         Kurs narxi: 400 000 so'm
         Kurs davomiyligi: 3 oy""")
+
+
+    elif text == '💻 IT Kids':
+        await message.answer(f"""Kurs nomi:  IT Kids
+
+           IT Kids – bu bolalar uchun mo’ljallangan IT kursi. Ushbu kurs farzandingizning mantiqiy va mustaqil fikrlash, turli hayotiy muammolarni to‘g‘ri hal etish qobiliyatlari rivojlanishiga yordam beradi. 
+
+           Kurs narxi: 220 000 so'm
+           Kurs davomiyligi: 3 oy""")
+
+    elif text == '💻 ENGLISH for Kids':
+        await message.answer(f"""Kurs nomi:  IT Kids
+
+           "English for Kids" - bolalar uchun ingliz tili kurslarimiz 7-12yoshgacha bo'lgan maktab yoshidagi bolalar uchun mo'ljallangan bo'lib, Way Ahead, Got it va Solutions o'quv qo'llanmalaridan foydalangan xolda Foundation ya'ni ingliz tili asoslaridan boshlab to Elementary darajasigacha darslar o'qitiladi. Guruhda bolalar soni 8-12tagacha bo'lib, ustozlarimiz bolajonlarga qiziqarli usulda darslarni tashkil etadilar.
+           Kurs narxi: 150 000 so'm
+           Kurs davomiyligi: ???""")
+
+
+
+
+

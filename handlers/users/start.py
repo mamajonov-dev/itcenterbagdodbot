@@ -16,7 +16,7 @@ async def bot_start(message: types.Message):
     database = sqlite3.connect('././database.sqlite')
     cursor = database.cursor()
     try:
-        cursor.execute('''INSERT INTO users(fullname, telegram_id)
+        cursor.execute('''INSERT INTO users(name, chatid)
         VALUES (?, ?)''', (fullname, chat_id))
         database.commit()
         database.close()

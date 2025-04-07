@@ -46,3 +46,14 @@ def hacatontest():
         KeyboardButton(text="10"),
     )
     return markup
+
+
+def phonebutton():
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+
+    markup.add(
+        KeyboardButton(text='📞 Telefon raqamini jo\'natish', request_contact=True),
+        KeyboardButton(text='⬅️ Orqaga'),
+
+    )
+    return markup

@@ -5,11 +5,12 @@ from aiogram.dispatcher import FSMContext
 
 from states.register_hacaton import HacatonStata
 from keyboards.default.mainmenubutoons import backbutton, genearatemainmenu
+from keyboards.default.otherkeyboards import phonebutton
 from data.config import ADMINS
 from loader import dp, bot
 
 
-@dp.message_handler(text='🎁 Quizga ro\'yxatdan o\'tish')
+@dp.message_handler(text='🎁 Konkursga ro\'yxatdan o\'tish')
 async def comment(message: Message):
     chatid = message.chat.id
     await bot.send_message(chatid, 'Ilitmos ism va  familiyangizni kiriting.',
@@ -50,9 +51,27 @@ async def getage(message: Message, state: FSMContext):
     else:
         await state.update_data({'age': message.text})
 
-        await bot.send_message(chatid, 'Telefon nomeringizni kiriting',
+        await bot.send_message(chatid, 'Telefon nomeringizni jo\'nating ⬇️⬇️',
+                               reply_markup=phonebutton())
+        await HacatonStata.phone.set()
+
+
+@dp.message_handler(state=HacatonStata.phone, content_types='contact')
+async def getage(message: Message, state: FSMContext):
+    chatid = message.chat.id
+    first_name = message.contact.first_name
+    phone = message.contact.phone_number
+    if message.text == '⬅️ Orqaga' or message.text == '/start' or message.text == '/help':
+        await bot.send_message(chatid, 'Bosh menu', reply_markup=genearatemainmenu())
+        await state.finish()
+    else:
+        await state.update_data({'phone': message.text})
+        await bot.send_message(-1002165970917, 'IT center Konkurs')
+        await bot.send_contact(chat_id=-1002165970917, first_name=first_name, phone_number=phone)
+        await bot.send_message(chatid, 'Qo\'shimcha telefon nomeringizni kiriting',
                                reply_markup=backbutton())
         await HacatonStata.nomer.set()
+
 
 
 @dp.message_handler(state=HacatonStata.nomer)
@@ -66,6 +85,8 @@ async def getphone(message: Message, state: FSMContext):
         text = data['text']
         age = data['age']
         name = data['name']
+        phone = data['phone']
+        phone = f'{phone}, {message.text}'
         database = sqlite3.connect('database.sqlite')
         cursor = database.cursor()
         cursor.execute('''SELECT sana FROM quizusers''')
@@ -79,7 +100,7 @@ async def getphone(message: Message, state: FSMContext):
         database = sqlite3.connect('database.sqlite')
         cursor = database.cursor()
         cursor.execute('''INSERT INTO  quizusers(name, telefon, age, sana, chatid) 
-                    VALUES (?,?,?,?,?)''', (name, message.text, age, sanab, chatid))
+                    VALUES (?,?,?,?,?)''', (name, phone, age, sanab, chatid))
         database.commit()
         database.close()
 
@@ -88,16 +109,12 @@ async def getphone(message: Message, state: FSMContext):
         cursor.execute('''SELECT id, sana FROM quizusers WHERE chatid = ?''', (chatid,))
         user = cursor.fetchone()
         database.close()
-        oy = user[1]
-        kun = ''
-        if oy == 1:
-            kun = '30-noyabr'
-        elif oy == 2:
-            kun = '1-dekabr'
-        text = f"✅✅   QUIZ   ✅✅\nRo'yxatdan o'tgan: \n{text}\nYoshi: {age}\nTelefon: {message.text}\n\nID: {user[0]}\nSana: {kun}"
+
+
+        text = f"✅✅   QUIZ   ✅✅\nRo'yxatdan o'tgan: \n{text}\nYoshi: {age}\nTelefon: {message.text}\n\nID: {user[0]}\nSana: {sanab}"
         await bot.send_message(ADMINS[0], text)
         await bot.send_message(chatid,
-                               f'Tabriklaymiz ro\'yxatdan o\'tdingiz ✅.\nSizning ID raqamingiz: {user[0]}\n\n {kun} kuni 10:00 da "QUIZ" da kutib qolamiz. '
-                               '\nBog\'lanish uchun +998917871199\nYoki telegram @NurmuhammadMamajonov',
+                               f'Tabriklaymiz ro\'yxatdan o\'tdingiz ✅.\nSizning ID raqamingiz: {user[0]}\n\n Sizni "KONKURS" da kutib qolamiz. Konkurs o\'tkaziladigan sanasini kanlada e\'lon qilamiz. Kanalimizni kuzatib boring '
+                               '\nBog\'lanish uchun +998917871199 +998998871199\nYoki telegram @NurmuhammadMamajonov',
                                reply_markup=genearatemainmenu())
         await state.finish()

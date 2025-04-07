@@ -3,7 +3,7 @@ from aiogram.types.reply_keyboard import ReplyKeyboardMarkup, KeyboardButton
 def genearatemainmenu():
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add(
-        KeyboardButton(text='🎁 Quizga ro\'yxatdan o\'tish')
+        KeyboardButton(text='🎁 Konkursga ro\'yxatdan o\'tish')
     )
     markup.add(
         KeyboardButton(text='🟢 Biz haqimizda'),
@@ -25,5 +25,4 @@ def backbutton():
         KeyboardButton(text='⬅️ Orqaga'),
 
     )
-
     return markup

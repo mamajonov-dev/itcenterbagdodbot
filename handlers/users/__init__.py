@@ -8,4 +8,4 @@ from . import registruser
 from . import help
 from . import start
 
-# from . import sendad
+from . import sendad
