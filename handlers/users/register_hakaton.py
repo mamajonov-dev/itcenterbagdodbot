@@ -111,7 +111,7 @@ async def getphone(message: Message, state: FSMContext):
         database.close()
 
 
-        text = f"✅✅   QUIZ   ✅✅\nRo'yxatdan o'tgan: \n{text}\nYoshi: {age}\nTelefon: {message.text}\n\nID: {user[0]}\nSana: {sanab}"
+        text = f"✅✅   QUIZ   ✅✅\nRo'yxatdan o'tgan: \n{text}\nYoshi: {age}\nTelefon: {phone}\n\nID: {user[0]}\nSana: {sanab}"
         await bot.send_message(ADMINS[0], text)
         await bot.send_message(chatid,
                                f'Tabriklaymiz ro\'yxatdan o\'tdingiz ✅.\nSizning ID raqamingiz: {user[0]}\n\n Sizni "KONKURS" da kutib qolamiz. Konkurs o\'tkaziladigan sanasini kanlada e\'lon qilamiz. Kanalimizni kuzatib boring '

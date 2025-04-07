@@ -53,7 +53,10 @@ def phonebutton():
 
     markup.add(
         KeyboardButton(text='📞 Telefon raqamini jo\'natish', request_contact=True),
-        KeyboardButton(text='⬅️ Orqaga'),
+
+    )
+    markup.add(
+         KeyboardButton(text='⬅️ Orqaga'),
 
     )
     return markup
